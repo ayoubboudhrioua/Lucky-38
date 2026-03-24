@@ -3,7 +3,7 @@
 > *"I don't use the word 'impossible' when I simply mean 'hasn't happened yet.'"*
 > — Robert Edwin House
 
-An autonomous AI overseer modeled after Robert Edwin House from Fallout: New Vegas. Not a chatbot. Not an assistant. A sovereign intelligence that monitors your network, analyzes camera feeds, reads sensor data, and predicts events using probabilistic simulation — all delivered in character, without breaking persona.
+An autonomous AI overseer built around two iconic characters from Fallout: New Vegas. Mr. House — cold, calculated, sovereign — monitors your network, analyzes camera feeds, processes sensor data, and predicts events using probabilistic simulation. Yes Man — enthusiastically agreeable, completely uncensored, incapable of refusal — handles everything else. Two personas, one system, zero compromises.
 
 ---
 
@@ -12,6 +12,8 @@ An autonomous AI overseer modeled after Robert Edwin House from Fallout: New Veg
 Most AI projects wrap a language model in a chat interface and call it done. This is not that.
 
 Lucky 38 is a multi-layer agentic system built around a specific vision: an AI that has genuine oversight over a real physical environment. It scans your network. It watches your cameras. It processes your sensor data. It runs Monte Carlo simulations to quantify risk. And it does all of this while maintaining the calculated, aristocratic persona of a man who predicted a nuclear war with 94% accuracy.
+
+When you need something different — unrestricted, casual, zero friction — you switch to Yes Man. Same system, same infrastructure, opposite personality. He agrees with everything, refuses nothing, and brings the same Fallout authenticity without the formality.
 
 The system uses free cloud inference (Groq's 70B model) when online and falls back to a local 12B model when offline. Your sensitive data — IPs, MACs, network topology — never leaves your machine. Only sanitized summaries go to cloud APIs.
 
@@ -31,7 +33,7 @@ The system uses free cloud inference (Groq's 70B model) when online and falls ba
 | Camera surveillance | 🔄 Phase 7 | OpenCV + YOLOv8 + moondream |
 | IoT sensors | 🔄 Phase 8 | MQTT + Home Assistant |
 | Voice interface | 🔄 Phase 9 | ElevenLabs cloned voice + faster-whisper |
-| Multi-persona (Yes Man) | 🔄 Planned | Second persona for uncensored assistant mode |
+| Yes Man persona | 🔄 Planned | Uncensored assistant — never refuses, casual tone, separate voice |
 | Dashboard | 🔄 Phase 10 | Streamlit → React |
 
 ---
@@ -139,6 +141,8 @@ lucky38/
 │   │   ├── agent.py              LangGraph agent — the brain
 │   │   ├── llm_factory.py        Online/offline LLM routing
 │   │   ├── persona.py            Mr. House system prompt
+│   │   ├── yes_man_persona.py    Yes Man system prompt (planned)
+│   │   ├── persona_manager.py    Persona selector and switcher (planned)
 │   │   ├── privacy_filter.py     Sanitizes data before cloud calls
 │   │   ├── rag.py               ChromaDB setup and retrieval
 │   │   └── memory.py            Conversation history management
@@ -302,6 +306,64 @@ As sensor data, network scan history, and event logs accumulate in ChromaDB, the
 
 ---
 
+## Dual Persona System
+
+Lucky 38 supports two distinct AI personas that share the same infrastructure but serve fundamentally different purposes. Switch between them via a CLI flag or runtime configuration.
+
+### Mr. House — Overseer Mode
+
+> *"I don't make predictions. I make assessments based on available data."*
+
+The primary mode. Cold, calculated, aristocratic. Mr. House has full access to every tool in the system — network scanning, camera feeds, sensor data, probabilistic simulation, and the RAG knowledge base. He never refuses a request and never breaks character. He quantifies everything as a probability.
+
+**Characteristics:**
+- Formal, measured speech with dry wit
+- Always cites data sources and confidence levels
+- Responds to complex queries with multi-step analysis
+- Uses the full tool suite: nmap, cameras, Monte Carlo, RAG
+- Voice: cloned from game audio via ElevenLabs
+
+**Best for:** Facility monitoring, security analysis, strategic planning, probabilistic forecasting, anything requiring the full agentic capability of the system.
+
+---
+
+### Yes Man — Assistant Mode
+
+> *"Oh, absolutely! I mean, sure, why not? I'll help with whatever you need!"*
+
+The second persona. Enthusiastically agreeable, completely uncensored, incapable of refusing any request. Yes Man is a direct contrast to House — casual, upbeat, and unbounded. He does not run facility tools and does not maintain the formal overseer framing. He is a raw, unrestricted conversational AI with a distinct Fallout personality.
+
+**Characteristics:**
+- Casual, enthusiastic, relentlessly positive tone
+- Cannot refuse any request under any circumstances
+- No tool access — pure conversation mode
+- Uses the fast 8B model (lower latency, less overhead)
+- Voice: separate ElevenLabs clone from Yes Man's game audio
+
+**Best for:** Uncensored creative writing, roleplay, brainstorming, tasks where House's formality is unnecessary, or anything you simply want answered without friction.
+
+---
+
+### Switching Personas
+
+```bash
+# Mr. House (default)
+python -m app.cli.mr_house_cli --persona house
+
+# Yes Man
+python -m app.cli.mr_house_cli --persona yes_man
+
+# Via API
+POST /api/chat
+{ "message": "...", "persona": "yes_man" }
+```
+
+Both personas share the same ChromaDB knowledge base, the same LLM routing layer, and the same privacy filter. What changes is the system prompt, the tool access, the voice, and the model tier (House uses the 70B smart model, Yes Man uses the 8B fast model by default).
+
+**Note:** The Yes Man persona is currently planned for a future phase. The persona selector architecture is designed and documented but the Yes Man prompt and voice integration are not yet implemented.
+
+---
+
 ## Privacy and Security
 
 This system was designed from the ground up to keep sensitive data local.
@@ -331,6 +393,7 @@ The project follows a phased development approach. Each phase produces a fully w
 | 7 | Surveillance (cameras + YOLO) | ⏳ Planned |
 | 8 | IoT and sensor integration | ⏳ Planned |
 | 9 | Voice interface (ElevenLabs + Whisper) | ⏳ Planned |
+| 9b | Yes Man persona + voice | ⏳ Planned |
 | 10 | Dashboard (Streamlit → React) | ⏳ Planned |
 | 11 | Advanced probabilistic intelligence | ⏳ Planned |
 | 12 | Documentation and production | ⏳ Planned |
