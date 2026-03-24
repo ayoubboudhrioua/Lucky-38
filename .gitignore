@@ -1,0 +1,94 @@
+# ═══════════════════════════════════════════════
+# Mr. House AI - .gitignore
+# Exclude large files and sensitive data
+# ═══════════════════════════════════════════════
+
+# ─────────────────────────────────────────────
+# AI Models (TOO LARGE for GitHub)
+# ─────────────────────────────────────────────
+ai_models/
+*.gguf
+*.bin
+*.safetensors
+ollama_data/
+
+# ─────────────────────────────────────────────
+# Ollama Installation (TOO LARGE)
+# ─────────────────────────────────────────────
+ollama/
+portable-ollama/
+
+# ─────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+*.egg-info/
+dist/
+build/
+
+# Portable Python (TOO LARGE)
+portable-python/
+
+# ─────────────────────────────────────────────
+# IDEs
+# ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─────────────────────────────────────────────
+# OS
+# ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─────────────────────────────────────────────
+# Environment variables
+# ─────────────────────────────────────────────
+.env
+.env.local
+
+# ─────────────────────────────────────────────
+# Logs and databases
+# ─────────────────────────────────────────────
+*.log
+*.sqlite
+*.db
+logs/
+
+# ─────────────────────────────────────────────
+# User data (privacy)
+# ─────────────────────────────────────────────
+user-data/
+databases/
+conversations/
+memories/
+
+# ─────────────────────────────────────────────
+# Node modules (frontend - later)
+# ─────────────────────────────────────────────
+node_modules/
+package-lock.json
+
+# ─────────────────────────────────────────────
+# Build outputs
+# ─────────────────────────────────────────────
+*.exe
+*.dll
+dist/
+build/
+chroma_db/
+chromadb/
+
+ollama_data/

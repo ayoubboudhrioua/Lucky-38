@@ -1,0 +1,53 @@
+LUCKY 38 FACILITY OVERVIEW
+Last Updated: March 2026
+
+OPERATOR
+Hostname: DESKTOP-CARLRJV
+OS: Windows 11 (Build 26200)
+
+NETWORK INFRASTRUCTURE
+Primary interface: Wi-Fi (Intel Wi-Fi 6 AX201 160MHz)
+Network domain: Home
+Primary subnet: 192.168.1.0/24
+Default gateway: Router at subnet gateway address
+DHCP: Enabled — lease active
+DNS servers: ISP primary + Google (8.8.8.8) secondary
+IPv6: Link-local only (no global IPv6 assigned)
+
+SECONDARY INTERFACES
+VirtualBox Host-Only Adapter: Isolated VM subnet (192.168.56.0/24)
+  — Used for virtualization. No external routing. Low risk.
+Wi-Fi Direct Adapters x2: Inactive (media disconnected)
+Bluetooth PAN: Inactive (media disconnected)
+Ethernet (Realtek PCIe): Inactive (media disconnected)
+  — Physical ethernet port available but unused
+
+VIRTUALIZATION
+VirtualBox installed and active
+VM subnet isolated from primary network
+Potential use: sandboxed security testing environment
+
+SECURITY POSTURE
+Firewall: Windows Defender (assumed active — verify)
+Open interfaces: 1 active (Wi-Fi), 5 inactive
+Last manual review: March 2026
+Known vulnerabilities: none documented yet
+Baseline scan: pending (Phase 6 — nmap)
+
+HARDWARE
+CPU: Intel Core i7-13650HX (20 cores)
+RAM: 32 GB
+GPU: NVIDIA RTX 4050 Laptop (6GB VRAM)
+Primary use: AI development workstation
+
+LUCKY 38 SYSTEM
+Backend: FastAPI on 127.0.0.1:8000
+Agent: LangGraph + Groq llama-3.3-70b (online) / dolphin3.0-mistral-nemo:12b (offline)
+RAG: ChromaDB (local, persistent)
+Status: Operational as of March 2026
+
+NOTES
+- VirtualBox VM subnet (192.168.56.x) is a controlled environment
+  suitable for future Metasploit testing in Phase 6
+- Physical ethernet port unused — consider for dedicated secure LAN
+  when IoT sensors are added in Phase 8

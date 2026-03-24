@@ -1,0 +1,32 @@
+# Core AI / LangChain 
+langchain==0.3.7 
+langchain-core==0.3.15 
+langchain-community==0.3.7 
+langchain-groq==0.2.1 
+langchain-google-genai==2.0.4 
+langchain-together==0.1.5 
+langchain-ollama==0.2.0 
+
+# Vector database 
+chromadb==0.5.15 
+
+# Backend 
+fastapi==0.115.0 
+uvicorn==0.32.0 
+httpx==0.28.1 
+python-dotenv==1.0.1 
+pydantic==2.9.2 
+python-multipart==0.0.12 
+
+# Vision 
+opencv-python==4.10.0.84 
+ultralytics==8.3.0 
+
+# Probabilistic / Math 
+numpy==2.1.0 
+scipy==1.14.1 
+
+# Utilities 
+loguru==0.7.2 
+rich==13.9.2 
+python-nmap==0.7.1
