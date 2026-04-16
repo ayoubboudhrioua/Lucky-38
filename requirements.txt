@@ -30,3 +30,6 @@ scipy==1.14.1
 loguru==0.7.2 
 rich==13.9.2 
 python-nmap==0.7.1
+
+#cli_librabry
+textual==8.2.1
